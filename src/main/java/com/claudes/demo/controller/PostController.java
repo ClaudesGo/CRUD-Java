@@ -38,7 +38,7 @@ public class PostController {
 //		return mv;
 //	}
 	
-	@PostMapping("/add/")
+	@GetMapping("/add/")
 	public ModelAndView add(@Valid Optional<Post> optional) {
 		
 		ModelAndView mv = new ModelAndView("/postAdd");
@@ -49,9 +49,11 @@ public class PostController {
 	
 	@GetMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
+		ModelAndView mv = new ModelAndView("/postAdd");
 		
+		mv.addObject("post", service.findOne(id));
 		
-		return add(service.findOne(id));
+		return mv;
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -62,7 +64,7 @@ public class PostController {
 		return findAll();
 	}
 
-	@PostMapping("/save")
+	@PostMapping("/save/")
 	public ModelAndView save(@Valid Post post, BindingResult result) {
 		
 		service.save(post);
