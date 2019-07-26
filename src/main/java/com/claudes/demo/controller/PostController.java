@@ -68,8 +68,10 @@ public class PostController {
 	public ModelAndView save(@Valid Post post, BindingResult result) {
 		
 		service.save(post);
+		ModelAndView mv = new ModelAndView("/post");
+		mv.addObject("posts", service.findAll());
 		
-		return findAll();
+		return mv;
 	}
 	
 	
