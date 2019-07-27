@@ -22,9 +22,10 @@
 						<tr>
 							<th>ID</th>
 							<th>Autor</th>
-							<th>T&iacute;tulo</th>
+							<th>Título</th>
 							<th>Data</th>
-							<th></th>
+							<th>Texto</th>
+							<th>Editar/Excluir</th>
 						</tr>
 					
 				
@@ -34,6 +35,7 @@
 							<td th:text="${post.auth}"></td>
 							<td th:text="${post.title}"></td>
 							<td th:text="${#dates.format(post.date, 'dd/MM/yyyy')}"></td>
+							<td th:text="${post.text}"></td>
 							<td>
 								<div class="btn-group pull-right">
 							   		<a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${post.id})}" >Editar</a>
